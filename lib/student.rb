@@ -92,7 +92,7 @@ class Student
     grade_10_students
   end
   def self.first_student_in_grade_10
-    grade_10_student = []
+    
     sql = <<-SQL
       SELECT *
       FROM students
