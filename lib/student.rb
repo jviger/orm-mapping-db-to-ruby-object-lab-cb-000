@@ -93,7 +93,7 @@ class Student
   end
   
   def self.students_below_12th_grade
-    grade_10_students = []
+    below_12_students = []
     sql = <<-SQL
       SELECT *
       FROM students
@@ -101,9 +101,9 @@ class Student
       
     SQL
  
-    DB[:conn].execute(sql, 10,num_students).map do |row|
-      grade_10_students << self.new_from_db(row)
+    DB[:conn].execute(sql).map do |row|
+      below_12_students << self.new_from_db(row)
     end
-    grade_10_students
+    below_12_students
   end
 end
