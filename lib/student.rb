@@ -120,4 +120,19 @@ class Student
     end
     below_12_students
   end
+  
+  def self.all_students_below_12th_grade
+    below_12_students = []
+    sql = <<-SQL
+      SELECT *
+      FROM students
+      WHERE grade < 12
+      
+    SQL
+ 
+    DB[:conn].execute(sql).map do |row|
+      below_12_students << self.new_from_db(row)
+    end
+    below_12_students
+  end
 end
