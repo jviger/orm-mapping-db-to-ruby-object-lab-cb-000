@@ -92,7 +92,7 @@ class Student
     grade_10_students
   end
   def self.first_student_in_grade_10
-    
+    grade_10_student = []
     sql = <<-SQL
       SELECT *
       FROM students
@@ -101,7 +101,7 @@ class Student
     SQL
  
     DB[:conn].execute(sql).map do |row|
-      grade_10_student = self.new_from_db(row)
+      grade_10_student << self.new_from_db(row)
     end.first
     grade_10_student
   end
